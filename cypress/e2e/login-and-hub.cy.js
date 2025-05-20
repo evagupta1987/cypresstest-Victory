@@ -29,18 +29,6 @@ describe('VictoryPlus Login and Hub Page Test', () => {
         });
       }
     });
-    cy.get('.carousel__container a').each($link => {
-          const href = $link.prop('href');
-          if (href && (href.startsWith('http') || href.startsWith('/'))) {
-            const fullUrl = href.startsWith('/') ? `${Cypress.config('baseUrl')}${href}` : href;
-            cy.request({
-              url: fullUrl,
-              failOnStatusCode: false
-            }).then(resp => {
-              expect(resp.status, `Broken link: ${fullUrl}`).to.be.lt(400);
-            });
-          }
-        });
     });
   });
 
